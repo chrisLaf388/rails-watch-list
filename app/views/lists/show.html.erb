@@ -1,0 +1,17 @@
+<h1><%= @list.name %></h1>
+
+<%= link_to 'Créer un Bookmark', new_list_bookmark_path(@list) %>
+
+
+<%# AFFICHER LES BOOKMARS DANS SHOW  BOOKMARK NIL %>
+
+<ul>
+    <% @bookmarks.each do |book| %>
+    <li>
+       <p><%= book.movie.title %> - <%= book.comment %>
+       <%= link_to 'effacer', bookmark_path(book),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></p>
+    </li>
+    <% end %>
+  </ul>

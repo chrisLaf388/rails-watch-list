@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Movies Lists</h1>
+
+  <%= simple_form_for @list do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+
+  <ul>
+    <% @lists.each do |list| %>
+    <li>
+      <%= link_to list_path(list) do %>
+        <%= list.name %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>
