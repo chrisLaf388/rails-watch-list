@@ -8,7 +8,7 @@ class BookmarksController < ApplicationController
     @list = List.find(params['list_id'].to_i)
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list_id = params['list_id'].to_i
-    if @bookmark.save!
+    if @bookmark.save
       redirect_to list_path(@list)
     else
       render 'new'
@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params['id'].to_i)
     @list = @bookmark.list
-    if @bookmark.destroy!
+    if @bookmark.destroy
       redirect_to list_path(@list)
     else
       render list_path(@list)
