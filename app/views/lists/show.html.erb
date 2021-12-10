@@ -8,16 +8,18 @@
 <%= link_to 'Créer un Bookmark', new_list_bookmark_path(@list) %>
 
 <ul>
-  <% @bookmarks.each do |book| %>
-    <li>
-      <p>
-        <%= book.movie.title %> - <%= book.comment %>
-        <%= link_to 'effacer', bookmark_path(book),
-          method: :delete,
-          data: { confirm: "Are you sure?" }
-        %>
-      </p>
-    </li>
+  <% if @bookmarks %>
+    <% @bookmarks.each do |book| %>
+      <li>
+        <p>
+          <%= book.movie.title %> - <%= book.comment %>
+          <%= link_to 'effacer', bookmark_path(book),
+            method: :delete,
+            data: { confirm: "Are you sure?" }
+          %>
+        </p>
+      </li>
+      <% end %>
   <% end %>
 </ul>
 
@@ -28,11 +30,11 @@
 
 <h3>Reviews</h3>
 <ul>
-  <% @reviews.each do |review| %>
-    <li>
-      <%= review.content %>
-    </li>
+  <% if @reviews %>
+    <% @reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
-
-<%= console %>
