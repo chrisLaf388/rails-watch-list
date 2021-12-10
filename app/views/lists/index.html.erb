@@ -3,14 +3,19 @@
 
   <%= simple_form_for @list do |f| %>
     <%= f.input :name %>
-    <%= f.submit "Submit review", class: "btn btn-primary" %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 
+  <%= console %>
   <ul>
     <% @lists.each do |list| %>
     <li>
       <%= link_to list_path(list) do %>
         <%= list.name %>
+        <% if list.photo.key %>
+          <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
       <% end %>
     </li>
     <% end %>
